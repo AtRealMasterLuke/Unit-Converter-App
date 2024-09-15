@@ -27,3 +27,4 @@ Once the app is launched, input values into the provided fields, and the app wil
 # Contributing
 Feel free to fork the project, submit pull requests, and open issues to improve the app further.
 # License
+This project is licensed under the GNU General Public License v3.0
