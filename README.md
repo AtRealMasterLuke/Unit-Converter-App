@@ -9,7 +9,9 @@ A simple, user-friendly Unit Converter application built using Kotlin and Jetpac
 # Project Structure
 The project consists of the following key components:
  1. MainActivity.kt: The main entry point of the app, where the composable functions are called, and the app's UI is structured.
- 2. UnitConverter Composable: Contains the UI elements for the unit conversion input and display. Utilizes a `Column` for stacking and a `Row` for side-by-side elements.
+ 2. UnitConverter Composable: Contains the UI elements for the unit conversion input and display. Utilizes a `Column` for stacking and a `Row` for side-by-side elements, with `Box` layouts for button placement.
+# Added Elements:
+- Button with Icon: Added buttons for unit selection using `Icon` composables alongside `Text`. These will be further developed to handle unit type selection.
 # Getting Started
  - Android Studio (latest version recommended)
  - Kotlin 1.5 or higher
@@ -18,6 +20,7 @@ The project consists of the following key components:
 Once the app is launched, input values into the provided fields, and the app will automatically calculate and display the converted unit values.
 # How It Works (for Developers)
  - The `OutlinedTextField` is used to take user input, while `Row` and `Column` Composables help in organizing the layout.
+ - `Button` Composables in `Box` layouts contain unit selection logic, to be integrated with a dropdown feature.
  - Additional unit conversion logic will be implemented to handle real-time conversions.
 # To-Do List
 - Add unit conversion logic (e.g., from meters to feet, Celsius to Fahrenheit, etc.)
