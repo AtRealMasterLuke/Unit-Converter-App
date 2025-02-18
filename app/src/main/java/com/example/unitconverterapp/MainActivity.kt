@@ -36,7 +36,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.unitconverterapp.ui.theme.UnitConverterAppTheme
-import java.time.format.TextStyle
 import kotlin.math.roundToInt
 
 class MainActivity : ComponentActivity() {
@@ -92,15 +91,16 @@ fun UnitConverter() {
         fontFamily = FontFamily.Cursive,
         fontSize = 30.sp,
         color = Color.Black
-        )
+    )
 
-    fun convertUnits(){
+    fun convertUnits() {
         val inputValueDouble = inputValue.toDoubleOrNull() ?: 0.0
         //inputValue.toDoubleOrNull(): attempts to convert the inputValue to a Double. If the conversion is successful, it returns the Double value. If the conversion fails (e.g., if inputValue is not a valid number), it returns null.
         //Elvis operator (?:): This operator is used to provide a default value in case the expression on its left side is null.
         //0.0: This is the default value that will be used if inputValue.toDoubleOrNull() returns null.
 
-        val result = (inputValueDouble * inputConversionFactor.value * 100 / outputConversionFactor.value).roundToInt() / 100
+        val result =
+            (inputValueDouble * inputConversionFactor.value * 100 / outputConversionFactor.value).roundToInt() / 100
         outputValue = result.toString()
     }
 
@@ -118,7 +118,7 @@ fun UnitConverter() {
             convertUnits()
             //Here goes what should happen when the value of our OutlinedTextField changes
         },
-            label = { Text(text = "Enter Value")})
+            label = { Text(text = "Enter Value") })
         Spacer(modifier = Modifier.height(18.dp))
         Row {
             //Here our UI elements will be next to each other
@@ -129,8 +129,17 @@ fun UnitConverter() {
                     Text(text = inputUnit)
                     Icon(Icons.Default.ArrowDropDown, contentDescription = "Drop Down Arrow")
                 }
-                DropdownMenu(expanded = inputExpanded, onDismissRequest = { inputExpanded = false }) {
-                    listOf("Centimeters" to 0.01, "Meters" to 1.00, "Feet" to 0.3048, "Millimeters" to 0.001, "Kilometers" to 1000.0, "Miles" to 1609.34).forEach { (unit, factor) ->
+                DropdownMenu(
+                    expanded = inputExpanded,
+                    onDismissRequest = { inputExpanded = false }) {
+                    listOf(
+                        "Centimeters" to 0.01,
+                        "Meters" to 1.00,
+                        "Feet" to 0.3048,
+                        "Millimeters" to 0.001,
+                        "Kilometers" to 1000.0,
+                        "Miles" to 1609.34
+                    ).forEach { (unit, factor) ->
                         DropdownMenuItem(text = { Text(unit) }, onClick = {
                             inputExpanded = false
                             inputUnit = unit
@@ -148,8 +157,17 @@ fun UnitConverter() {
                     Text(text = outputUnit)
                     Icon(Icons.Default.ArrowDropDown, contentDescription = "Drop Down Arrow")
                 }
-                DropdownMenu(expanded = outputExpanded, onDismissRequest = { outputExpanded = false }) {
-                    listOf("Centimeters" to 0.01, "Meters" to 1.00, "Feet" to 0.3048, "Millimeters" to 0.001, "Kilometers" to 1000.0, "Miles" to 1609.34).forEach { (unit, factor) ->
+                DropdownMenu(
+                    expanded = outputExpanded,
+                    onDismissRequest = { outputExpanded = false }) {
+                    listOf(
+                        "Centimeters" to 0.01,
+                        "Meters" to 1.00,
+                        "Feet" to 0.3048,
+                        "Millimeters" to 0.001,
+                        "Kilometers" to 1000.0,
+                        "Miles" to 1609.34
+                    ).forEach { (unit, factor) ->
                         DropdownMenuItem(text = { Text(unit) }, onClick = {
                             outputExpanded = false
                             outputUnit = unit
@@ -164,8 +182,10 @@ fun UnitConverter() {
         }
         Spacer(modifier = Modifier.height(16.dp))
         //Result Text
-        Text(text = "Result: $outputValue $outputUnit",
-            style = MaterialTheme.typography.titleMedium)
+        Text(
+            text = "Result: $outputValue $outputUnit",
+            style = MaterialTheme.typography.titleMedium
+        )
     }
 }
 
